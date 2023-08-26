@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"os"
 	"time"
+
+	"github.com/ahmadyogi543/redlight/internal/data"
 )
 
 const version = "1.0.0"
@@ -25,6 +27,7 @@ type config struct {
 type application struct {
 	cfg    config
 	logger *log.Logger
+	models data.Models
 }
 
 func main() {
@@ -50,6 +53,7 @@ func main() {
 	app := &application{
 		cfg:    cfg,
 		logger: log.New(os.Stdout, "", log.Ldate|log.Ltime),
+		models: data.NewModels(db),
 	}
 
 	server := http.Server{
