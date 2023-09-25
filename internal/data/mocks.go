@@ -6,6 +6,10 @@ func (m MockMovieModel) Insert(movie *Movie) error {
 	return nil
 }
 
+func (m MockMovieModel) GetAll(title string, genres []string, filters Filters) ([]*Movie, error) {
+	return nil, nil
+}
+
 func (m MockMovieModel) Get(id int64) (*Movie, error) {
 	return nil, nil
 }
