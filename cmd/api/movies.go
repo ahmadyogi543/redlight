@@ -34,8 +34,9 @@ func (app *application) listMoviesHandler(w http.ResponseWriter, r *http.Request
 		"-year",
 		"-runtime",
 	}
+	input.ValidateFilters(v)
 
-	if data.ValidateFilters(v, input.Filters); !v.Valid() {
+	if !v.Valid() {
 		app.failedValidationResponse(w, r, v.Errors)
 		return
 	}
